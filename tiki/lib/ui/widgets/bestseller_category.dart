@@ -24,9 +24,6 @@ class _BestsellerCategoryState extends State<BestsellerCategory> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 320, height: 568)..init(context);
-    List<Widget> _widgetOptions = <Widget>[
-      Tab2(widget.model),
-    ];
     return Container(
       margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
       height: ScreenUtil.getInstance().setHeight(500),
@@ -65,7 +62,14 @@ class _BestsellerCategoryState extends State<BestsellerCategory> {
           ),
           Expanded(
             child: Container(
-              child: _widgetOptions.elementAt(value),
+              child: [
+                Tab2(widget.model),
+                Tab2(widget.model),
+                Tab2(widget.model),
+                Tab2(widget.model),
+                Tab2(widget.model),
+                Tab2(widget.model),
+              ].elementAt(value),
             ),
           ),
           Divider(),

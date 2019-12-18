@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:tiki/scoped_models/tab_home_model.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
 
 
 class HomeCategory extends StatefulWidget {
+  final TabHomeModel model;
+
+  const HomeCategory(this.model);
+
   @override
   _HomeCategoryState createState() => _HomeCategoryState();
 }
@@ -37,7 +42,9 @@ class _HomeCategoryState extends State<HomeCategory> {
                         fontSize: ScreenUtil.getInstance().setSp(14),
                         color: Colors.blue),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    widget.model.changeIndex(1);
+                  },
                 ),
               ),
             ),

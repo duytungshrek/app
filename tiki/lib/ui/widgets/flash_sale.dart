@@ -3,7 +3,6 @@ import 'package:tiki/enums/view_state.dart';
 import 'package:tiki/models/types.dart';
 import 'package:tiki/scoped_models/tab_home_model.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
-import 'package:random_string/random_string.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class FlashSale extends StatefulWidget {
@@ -23,9 +22,6 @@ class _FlashSaleState extends State<FlashSale> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 320, height: 568)..init(context);
-    List<Widget> _widgetOptions = <Widget>[
-      Tab1(widget.model),
-    ];
     return Column(
       children: <Widget>[
         Container(
@@ -34,7 +30,14 @@ class _FlashSaleState extends State<FlashSale> {
         ),
         Expanded(
           child: Container(
-            child: _widgetOptions.elementAt(value),
+            child: [
+              Tab1(widget.model),
+              Tab1(widget.model),
+              Tab1(widget.model),
+              Tab1(widget.model),
+              Tab1(widget.model),
+              Tab1(widget.model),
+            ].elementAt(value),
           ),
         ),
       ],

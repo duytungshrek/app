@@ -1,16 +1,11 @@
 import 'dart:async';
-
 import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:tiki/enums/view_state.dart';
 import 'package:tiki/models/types.dart';
-
 import 'package:tiki/scoped_models/tab_home_model.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
-import 'package:tiki/ui/views/base_view.dart';
-import 'package:tiki/ui/views/home_view.dart';
-import 'package:tiki/ui/views/tab_category.dart';
 import 'package:tiki/ui/widgets/bestseller_category.dart';
 import 'package:tiki/ui/widgets/coffee_category.dart';
 import 'package:tiki/ui/widgets/cup_category.dart';
@@ -19,6 +14,10 @@ import 'package:tiki/ui/widgets/new_category.dart';
 import 'package:tiki/ui/widgets/wg_category.dart';
 
 class TabHome extends StatefulWidget {
+  final TabHomeModel model;
+
+  const TabHome(this.model);
+
   @override
   _TabHomeState createState() => _TabHomeState();
 }
@@ -28,7 +27,6 @@ class _TabHomeState extends State<TabHome> {
     initialPage: 0,
   );
   int _currentPage = 0;
-
 
   @override
   void initState() {
@@ -52,308 +50,300 @@ class _TabHomeState extends State<TabHome> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 320, height: 568)..init(context);
-    return BaseView<TabHomeModel>(
-      onModelReady: (model) {
-        model.fetchHomeProductData();
-      },
-      builder: (context, child, model) {
-        return Scaffold(
-          backgroundColor: Colors.grey,
-          body: CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                leading: null,
-                title: Text(
-                  "TIKI",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                actions: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                    child: Icon(Icons.shopping_cart),
-                  )
-                ],
-                centerTitle: true,
-                elevation: 0,
-                pinned: false,
-              ),
-              SliverAppBar(
-                automaticallyImplyLeading: false,
-                pinned: true,
-                title: TextField(
-                  onTap: () {
-                    print("TapSearch");
-                    HomeViewState.changeIndex(2);
-                  },
-                  decoration: InputDecoration(
-                      contentPadding: EdgeInsets.all(5),
-                      hintText: "Bạn tìm gì hôm nay... ",
-                      hintStyle: TextStyle(
-                          fontSize: ScreenUtil.getInstance().setSp(14),
-                          color: Colors.black87),
-                      filled: true,
-                      fillColor: Colors.white,
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(6)),
-                      )),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Container(
-                    height: ScreenUtil.getInstance().setHeight(120),
-                    color: Colors.white,
-                    child: PageView(
-                      scrollDirection: Axis.horizontal,
-                      children: buildListTiles(),
-                      controller: _pageController,
-                    )),
-              ),
-              SliverToBoxAdapter(
-                child: Container(
-                    color: Colors.white,
-                    height: ScreenUtil.getInstance().setHeight(70),
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            leading: null,
+            title: Text(
+              "TIKI",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+            ),
+            actions: <Widget>[
+              Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: Icon(Icons.shopping_cart),
+              )
+            ],
+            centerTitle: true,
+            elevation: 0,
+            pinned: false,
+          ),
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            pinned: true,
+            title: TextField(
+              onTap: () {
+                widget.model.changeIndex(2);
+              },
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(5),
+                  hintText: "Bạn tìm gì hôm nay... ",
+                  hintStyle: TextStyle(
+                      fontSize: ScreenUtil.getInstance().setSp(14),
+                      color: Colors.black87),
+                  filled: true,
+                  fillColor: Colors.white,
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(6)),
+                  )),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+                height: ScreenUtil.getInstance().setHeight(120),
+                color: Colors.white,
+                child: PageView(
+                  scrollDirection: Axis.horizontal,
+                  children: buildListTiles(),
+                  controller: _pageController,
+                )),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+                color: Colors.white,
+                height: ScreenUtil.getInstance().setHeight(70),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        widget.model.changeIndex(1);
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            child: Image.asset("images/danhmuc.png"),
+                            height: ScreenUtil.getInstance().setHeight(50),
+                          ),
+                          Text(
+                            "Danh mục",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: ScreenUtil.getInstance().setSp(12)),
+                          )
+                        ],
+                      ),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset("images/tikilive.png"),
+                          height: ScreenUtil.getInstance().setHeight(50),
+                        ),
+                        Text(
+                          "TikiLIVE",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: ScreenUtil.getInstance().setSp(12)),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset("images/tikideal.png"),
+                          height: ScreenUtil.getInstance().setHeight(50),
+                        ),
+                        Text(
+                          "Tiki Deal",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: ScreenUtil.getInstance().setSp(12)),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset("images/thequa.png"),
+                          height: ScreenUtil.getInstance().setHeight(50),
+                        ),
+                        Text(
+                          "Thẻ quà",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: ScreenUtil.getInstance().setSp(12)),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Image.asset("images/tikinow.png"),
+                          height: ScreenUtil.getInstance().setHeight(50),
+                        ),
+                        Text(
+                          "TikiNOW",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: ScreenUtil.getInstance().setSp(12)),
+                        )
+                      ],
+                    ),
+                  ],
+                )),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
+              color: Color(0xFF105aae),
+              height: ScreenUtil.getInstance().height / 2,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        GestureDetector(
-                          onTap: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>TabCategory()));
-                          },
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                child: Image.asset("images/danhmuc.png"),
-                                height: ScreenUtil.getInstance().setHeight(50),
-                              ),
-                              Text(
-                                "Danh mục",
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: ScreenUtil.getInstance().setSp(12)),
-                              )
-                            ],
+                        Container(
+                          child: Image.asset(
+                            "images/flash_deal.png",
+                            fit: BoxFit.cover,
+                          ),
+                          width: ScreenUtil.getInstance().width * 30 / 100,
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                          width: ScreenUtil.getInstance().width * 45 / 100,
+                          child: FittedBox(
+                            child: buildCountdown(),
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              child: Image.asset("images/tikilive.png"),
-                              height: ScreenUtil.getInstance().setHeight(50),
-                            ),
-                            Text(
-                              "TikiLIVE",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: ScreenUtil.getInstance().setSp(12)),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              child: Image.asset("images/tikideal.png"),
-                              height: ScreenUtil.getInstance().setHeight(50),
-                            ),
-                            Text(
-                              "Tiki Deal",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: ScreenUtil.getInstance().setSp(12)),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              child: Image.asset("images/thequa.png"),
-                              height: ScreenUtil.getInstance().setHeight(50),
-                            ),
-                            Text(
-                              "Thẻ quà",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: ScreenUtil.getInstance().setSp(12)),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              child: Image.asset("images/tikinow.png"),
-                              height: ScreenUtil.getInstance().setHeight(50),
-                            ),
-                            Text(
-                              "TikiNOW",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: ScreenUtil.getInstance().setSp(12)),
-                            )
-                          ],
+                        Expanded(
+                          child: Container(
+                            color: Color(0xFF1369cb),
+                            child: FlatButton(
+                                padding: EdgeInsets.all(0),
+                                onPressed: null,
+                                child: Text(
+                                  "XEM THÊM",
+                                  maxLines: 1,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                )),
+                          ),
                         ),
                       ],
-                    )),
-              ),
-              SliverToBoxAdapter(
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-                  color: Color(0xFF105aae),
-                  height: ScreenUtil.getInstance().height / 2,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Container(
-                              child: Image.asset(
-                                "images/flash_deal.png",
-                                fit: BoxFit.cover,
-                              ),
-                              width: ScreenUtil.getInstance().width * 30 / 100,
-                            ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              width: ScreenUtil.getInstance().width * 45 / 100,
-                              child: FittedBox(
-                                child: buildCountdown(),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            Expanded(
-                              child: Container(
-                                color: Color(0xFF1369cb),
-                                child: FlatButton(
-                                    padding: EdgeInsets.all(0),
-                                    onPressed: null,
-                                    child: Text(
-                                      "XEM THÊM",
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    )),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                          child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
-                          color: Colors.white,
-                        ),
-                        child: model.state == ViewState.Busy
-                            ? Center(
-                                child: CircularProgressIndicator(),
-                              )
-                            : FlashSale(model),
-                      )),
-                      Container(
-                        height: 10,
-                      )
-                    ],
+                    ),
                   ),
-                ),
+                  Expanded(
+                      child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: Colors.white,
+                    ),
+                    child: widget.model.state == ViewState.Busy
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : FlashSale(widget.model),
+                  )),
+                  Container(
+                    height: 10,
+                  )
+                ],
               ),
-              SliverToBoxAdapter(
-                  child: Container(
-                margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                height: ScreenUtil.getInstance().setHeight(250),
-                color: Colors.white,
-                child: HomeCategory(),
-              )),
-              SliverToBoxAdapter(
-                  child: Container(
-                margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                height: ScreenUtil.getInstance().setHeight(120),
-                color: Colors.white,
-                child: HomeService(),
-              )),
-              SliverToBoxAdapter(
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
-                  height: ScreenUtil.getInstance().setHeight(115),
-                  color: Colors.white,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            child: Text(
-                              "  Tìm kiếm nổi bật  ",
-                              style: TextStyle(
-                                  fontSize: ScreenUtil.getInstance().setSp(14),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            margin: EdgeInsets.all(10),
-                            width: ScreenUtil.getInstance().setWidth(215),
-                          ),
-                        ],
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                      ),
-                      Expanded(
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Row(
-                                  children: listSearch(),
-                                ),
-                                Row(
-                                  children: listSearch(),
-                                ),
-                              ],
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  model.state == ViewState.Busy
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : BestsellerCategory(
-                          "https://salt.tikicdn.com/cache/w885/ts/banner/5c/b1/a5/3a9c361b3c418b8be71b3e08eadd4328.png",
-                          model),
-                  model.state == ViewState.Busy
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : NewCategory(
-                          "https://salt.tikicdn.com/cache/w885/ts/banner/63/e2/05/93fbd2f36d401276db830116ca9cb2ce.jpg",
-                          model),
-                  model.state == ViewState.Busy
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : CupCategory(
-                          "https://salt.tikicdn.com/cache/w885/ts/banner/da/70/d7/37bf047b349b47721add7b888b766df8.jpg",
-                          model),
-                  model.state == ViewState.Busy
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : CoffeeCategory(
-                          "https://salt.tikicdn.com/cache/w885/ts/banner/31/ce/87/b7c8ec03fe33c0935b60301cf98b2cb4.jpg",
-                          model),
-                ]),
-              ),
-            ],
+            ),
           ),
-        );
-      },
+          SliverToBoxAdapter(
+              child: Container(
+            margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
+            height: ScreenUtil.getInstance().setHeight(250),
+            color: Colors.white,
+            child: HomeCategory(widget.model),
+          )),
+          SliverToBoxAdapter(
+              child: Container(
+            margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
+            height: ScreenUtil.getInstance().setHeight(120),
+            color: Colors.white,
+            child: HomeService(),
+          )),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
+              height: ScreenUtil.getInstance().setHeight(115),
+              color: Colors.white,
+              child: Column(
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          "  Tìm kiếm nổi bật  ",
+                          style: TextStyle(
+                              fontSize: ScreenUtil.getInstance().setSp(14),
+                              fontWeight: FontWeight.bold),
+                        ),
+                        margin: EdgeInsets.all(10),
+                        width: ScreenUtil.getInstance().setWidth(215),
+                      ),
+                    ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                  ),
+                  Expanded(
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            Row(
+                              children: listSearch(),
+                            ),
+                            Row(
+                              children: listSearch(),
+                            ),
+                          ],
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              widget.model.state == ViewState.Busy
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : BestsellerCategory(
+                      "https://salt.tikicdn.com/cache/w885/ts/banner/5c/b1/a5/3a9c361b3c418b8be71b3e08eadd4328.png",
+                      widget.model),
+              widget.model.state == ViewState.Busy
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : NewCategory(
+                      "https://salt.tikicdn.com/cache/w885/ts/banner/63/e2/05/93fbd2f36d401276db830116ca9cb2ce.jpg",
+                      widget.model),
+              widget.model.state == ViewState.Busy
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : CupCategory(
+                      "https://salt.tikicdn.com/cache/w885/ts/banner/da/70/d7/37bf047b349b47721add7b888b766df8.jpg",
+                      widget.model),
+              widget.model.state == ViewState.Busy
+                  ? Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : CoffeeCategory(
+                      "https://salt.tikicdn.com/cache/w885/ts/banner/31/ce/87/b7c8ec03fe33c0935b60301cf98b2cb4.jpg",
+                      widget.model),
+            ]),
+          ),
+        ],
+      ),
     );
   }
 

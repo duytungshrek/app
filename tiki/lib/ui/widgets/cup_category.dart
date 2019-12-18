@@ -25,10 +25,6 @@ class _CupCategoryState extends State<CupCategory> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 320, height: 568)..init(context);
-    List<Widget> _widgetOptions = <Widget>[
-      Tab1(widget.model),
-
-    ];
     return Container(
       margin: EdgeInsets.fromLTRB(0, 2, 0, 2),
       height: ScreenUtil.getInstance().setHeight(500),
@@ -70,7 +66,14 @@ class _CupCategoryState extends State<CupCategory> {
           Expanded(
             child: Container(
 
-              child: _widgetOptions.elementAt(value),
+              child: [
+                Tab1(widget.model),
+                Tab1(widget.model),
+                Tab1(widget.model),
+                Tab1(widget.model),
+                Tab1(widget.model),
+                Tab1(widget.model),
+              ].elementAt(value),
             ),
           ),
           Divider(),
