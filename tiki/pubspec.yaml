@@ -1,0 +1,123 @@
+name: tiki
+description: A new Flutter application.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  # scoped model packages
+  scoped_model: ^1.0.1
+  # get it
+  get_it: ^1.0.3
+  countdown_flutter: ^0.1.1
+  english_words: ^3.1.5
+  http: ^0.12.0+2
+  random_string: 1.1.0
+  flutter_staggered_grid_view: ^0.3.0
+  transparent_image: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+      - images/menu.png
+      - images/trending.png
+      - images/hot1.jpg
+      - images/hot2.jpg
+      - images/hot3.jpg
+      - images/hot4.jpg
+      - images/hot5.jpg
+      - images/hot6.png
+      - images/hot7.png
+      - images/hot8.png
+      - images/hot9.png
+      - images/danhmuc.png
+      - images/thequa.png
+      - images/tikideal.png
+      - images/tikinow.png
+      - images/tikilive.png
+      - images/flash_deal.png
+      - images/dochoi.png
+      - images/category/1.png
+      - images/category/2.png
+      - images/category/3.png
+      - images/category/4.png
+      - images/category/5.png
+      - images/category/6.png
+      - images/category/7.png
+      - images/category/8.png
+      - images/category/9.png
+      - images/category/10.png
+      - images/category/11.png
+      - images/category/12.png
+      - images/category/13.png
+      - images/category/14.png
+      - images/category/15.png
+      - images/category/16.png
+      - images/service/1.png
+      - images/service/2.png
+      - images/service/3.png
+      - images/service/4.png
+      - images/service/5.png
+      - images/service/6.png
+      - images/service/7.png
+      - images/service/8.png
+      - images/service/9.png
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+     - family: Garamond
+       fonts:
+         - asset: fonts/app.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
