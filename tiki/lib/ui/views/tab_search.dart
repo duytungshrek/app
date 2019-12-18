@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tiki/models/types.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
-import 'package:tiki/ui/views/home_view.dart';
 
 class TabSearch extends StatefulWidget {
   @override
@@ -15,21 +14,13 @@ class _TabSearchState extends State<TabSearch> {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
           backgroundColor: Colors.white,
-          leading: GestureDetector(
-            child: Icon(
-              Icons.arrow_back,
-              color: Colors.black87,
-            ),
-            onTap: () {
-              print(HomeViewState.currentIndex);
-              HomeViewState.currentIndex = 1;
-              print(HomeViewState.currentIndex);
-            },
-          ),
           title: TextField(
             onTap: () {
-              HomeViewState.currentIndex = 1;
+
             },
             textInputAction: TextInputAction.search,
             onSubmitted: (str) {},
