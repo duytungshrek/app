@@ -41,19 +41,24 @@ class TabNotificationState extends State<TabNotification> {
                             border: Border(
                               left: BorderSide(
                                   color: status ? Colors.blue : Colors.grey,
-                                  width: 3.0),
-                              bottom:
-                                  BorderSide(color: Colors.grey, width: 0.5),
-                              top: BorderSide(color: Colors.grey, width: 0.5),
-                              right: BorderSide(color: Colors.grey, width: 0.5),
+                                  width: ScreenUtil.getInstance().setWidth(3)),
+                              bottom: BorderSide(
+                                  color: Colors.grey,
+                                  width: ScreenUtil.getInstance().setWidth(1)),
+                              top: BorderSide(
+                                  color: Colors.grey,
+                                  width: ScreenUtil.getInstance().setWidth(1)),
+                              right: BorderSide(
+                                  color: Colors.grey,
+                                  width: ScreenUtil.getInstance().setWidth(1)),
                             ),
                             color: status ? Colors.white : Colors.grey[300],
                           ),
-                          width: 50,
-                          height: 50,
+                          width: ScreenUtil.getInstance().setWidth(50),
+                          height: ScreenUtil.getInstance().setHeight(50),
                           child: Icon(
                             Icons.home,
-                            size: 30,
+                            size: ScreenUtil.getInstance().setSp(30),
                             color: Colors.grey,
                           ),
                         ),
@@ -69,18 +74,24 @@ class TabNotificationState extends State<TabNotification> {
                             border: Border(
                               left: BorderSide(
                                   color: status ? Colors.grey : Colors.blue,
-                                  width: 3.0),
-                              bottom:
-                                  BorderSide(color: Colors.grey, width: 0.5),
-                              top: BorderSide(color: Colors.grey, width: 0.5),
-                              right: BorderSide(color: Colors.grey, width: 0.5),
+                                  width: ScreenUtil.getInstance().setWidth(3)),
+                              bottom: BorderSide(
+                                  color: Colors.grey,
+                                  width: ScreenUtil.getInstance().setWidth(1)),
+                              top: BorderSide(
+                                  color: Colors.grey,
+                                  width: ScreenUtil.getInstance().setWidth(1)),
+                              right: BorderSide(
+                                  color: Colors.grey,
+                                  width: ScreenUtil.getInstance().setWidth(1)),
                             ),
                             color: status ? Colors.grey[300] : Colors.white,
                           ),
-                          width: 50,
-                          height: 50,
-                          child:
-                              Icon(Icons.timer, size: 30, color: Colors.grey),
+                          width: ScreenUtil.getInstance().setWidth(50),
+                          height: ScreenUtil.getInstance().setHeight(50),
+                          child: Icon(Icons.history,
+                              size: ScreenUtil.getInstance().setSp(30),
+                              color: Colors.grey),
                         ),
                         onTap: () {
                           setState(() {
@@ -114,10 +125,9 @@ Widget contentNotificationTotal() {
                   children: <Widget>[
                     Expanded(
                       flex: 1,
-                      child: Icon(
-                        Icons.new_releases,
-                        color: Colors.orange,
-                      ),
+                      child: Container(
+                       child: Image.asset("images/percent.png"), 
+                      )
                     ),
                     Expanded(
                       flex: 4,
@@ -165,10 +175,9 @@ Widget recentNotification() {
                   children: <Widget>[
                     Expanded(
                       flex: 1,
-                      child: Icon(
-                        Icons.timer,
-                        color: Colors.pink,
-                      ),
+                      child: Container(
+                        child: Image.asset("images/history.png"),
+                      )
                     ),
                     Expanded(
                       flex: 4,

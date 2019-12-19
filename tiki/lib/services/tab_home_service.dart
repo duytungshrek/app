@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:tiki/models/home_product.dart';
 
-class TabHomeService{
+class TabHomeService {
   Future<HomeProduct> fetchHomeProductData() async {
-    String url = "https://trungnguyen.izysync.com/rest/V1/mobileapi/stores/home";
+    //String url = "https://trungnguyen.izysync.com/rest/V1/mobileapi/stores/home";
+    String url =
+        "https://raw.githubusercontent.com/duytungshrek/JSON/master/response.json";
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
