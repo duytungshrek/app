@@ -236,7 +236,7 @@ class _TabHomeState extends State<TabHome> {
                   Expanded(
                       child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
                       color: Colors.white,
                     ),
                     child: widget.model.state == ViewState.Busy

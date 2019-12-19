@@ -3,10 +3,10 @@ import 'package:tiki/scoped_models/tab_home_model.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
 import 'package:tiki/ui/shared/list_tab.dart';
 import 'package:tiki/ui/views/base_view.dart';
-import 'package:tiki/ui/views/tab5.dart';
 import 'package:tiki/ui/views/tab_category.dart';
 import 'package:tiki/ui/views/tab_home.dart';
 import 'package:tiki/ui/views/tab_notification.dart';
+import 'package:tiki/ui/views/tab_profile.dart';
 import 'package:tiki/ui/views/tab_search.dart';
 
 class HomeView extends StatefulWidget {
@@ -30,7 +30,7 @@ class HomeViewState extends State<HomeView> {
               TabCategory(),
               TabSearch(),
               TabNotification(),
-              Tab5(),
+              TabProfile(),
             ],
           ),
         ),

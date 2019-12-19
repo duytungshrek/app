@@ -12,7 +12,7 @@ class TabHomeModel extends BaseModel {
   // ignore: missing_return
   Future<TabHomeService> fetchHomeProductData() async {
     setState(ViewState.Busy);
-    print("fetching....");
+    print("Fetching....");
     product = await tabHomeService.fetchHomeProductData();
     print("Success");
     setState(ViewState.Retrieved);
