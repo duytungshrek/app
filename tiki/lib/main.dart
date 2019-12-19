@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiki/ui/views/home_view.dart';
+import 'package:tiki/ui/views/first_views/home_view.dart';
 import './service_locator.dart';
 
 void main() {

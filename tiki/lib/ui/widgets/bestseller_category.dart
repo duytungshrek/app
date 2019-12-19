@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiki/ui/views/second_views/product_detail_page.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:tiki/enums/view_state.dart';
 import 'package:tiki/models/types.dart';
@@ -133,12 +134,16 @@ class Tab2 extends StatelessWidget {
         crossAxisCount: 2,
         physics: AlwaysScrollableScrollPhysics(),
         children: List.generate(model.getData.bestseller.items.length, (index) {
-          return Container(
-            color: Colors.white,
-            child: Column(
-              children: <Widget>[
-                GestureDetector(
-                  child: Container(
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProductDetailPage()));
+            },
+            child: Container(
+              color: Colors.white,
+              child: Column(
+                children: <Widget>[
+                  Container(
                     width: ScreenUtil.getInstance().setWidth(80),
                     height: ScreenUtil.getInstance().setHeight(80),
                     child: FadeInImage.memoryNetwork(
@@ -148,28 +153,25 @@ class Tab2 extends StatelessWidget {
                       placeholder: kTransparentImage,
                     ),
                   ),
-                  onTap: () {
-                    print(MediaQuery.of(context).size.height);
-                  },
-                ),
-                Container(
-                  width: ScreenUtil.getInstance().setWidth(80),
-                  alignment: AlignmentDirectional.center,
-                  child: Text(
-                    '${model.getData.bestseller.items[index].name}',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
+                  Container(
+                    width: ScreenUtil.getInstance().setWidth(80),
+                    alignment: AlignmentDirectional.center,
+                    child: Text(
+                      '${model.getData.bestseller.items[index].name}',
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
-                Container(
-                  width: ScreenUtil.getInstance().setWidth(80),
-                  alignment: AlignmentDirectional.center,
-                  child: Text(
-                    '${model.getData.bestseller.items[index].price} đ',
+                  Container(
+                    width: ScreenUtil.getInstance().setWidth(80),
+                    alignment: AlignmentDirectional.center,
+                    child: Text(
+                      '${model.getData.bestseller.items[index].price} đ',
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         }),

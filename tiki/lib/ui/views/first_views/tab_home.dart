@@ -53,6 +53,7 @@ class _TabHomeState extends State<TabHome> {
     return Scaffold(
       backgroundColor: Colors.grey,
       body: CustomScrollView(
+        physics: AlwaysScrollableScrollPhysics(),
         slivers: <Widget>[
           SliverAppBar(
             automaticallyImplyLeading: false,
