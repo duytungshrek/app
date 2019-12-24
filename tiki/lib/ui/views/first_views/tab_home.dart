@@ -2,10 +2,12 @@ import 'dart:async';
 import 'package:countdown_flutter/countdown_flutter.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:tiki/enums/view_state.dart';
 import 'package:tiki/models/types.dart';
 import 'package:tiki/scoped_models/tab_home_model.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
+import 'package:tiki/ui/shared/product_shimmer.dart';
 import 'package:tiki/ui/widgets/bestseller_category.dart';
 import 'package:tiki/ui/widgets/coffee_category.dart';
 import 'package:tiki/ui/widgets/cup_category.dart';
@@ -241,8 +243,23 @@ class _TabHomeState extends State<TabHome> {
                       color: Colors.white,
                     ),
                     child: widget.model.state == ViewState.Busy
-                        ? Center(
-                            child: CircularProgressIndicator(),
+                        ? Shimmer.fromColors(
+                            baseColor: Colors.grey[300],
+                            highlightColor: Colors.white60,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 30),
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    ProductShimmerState.buildProduct(),
+                                    ProductShimmerState.buildProduct(),
+                                    ProductShimmerState.buildProduct(),
+                                  ],
+                                ),
+                              ),
+                            ),
                           )
                         : FlashSale(widget.model),
                   )),
@@ -314,30 +331,22 @@ class _TabHomeState extends State<TabHome> {
           SliverList(
             delegate: SliverChildListDelegate([
               widget.model.state == ViewState.Busy
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
+                  ? ProductShimmer()
                   : BestsellerCategory(
                       "https://salt.tikicdn.com/cache/w885/ts/banner/5c/b1/a5/3a9c361b3c418b8be71b3e08eadd4328.png",
                       widget.model),
               widget.model.state == ViewState.Busy
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
+                  ? ProductShimmer()
                   : NewCategory(
                       "https://salt.tikicdn.com/cache/w885/ts/banner/63/e2/05/93fbd2f36d401276db830116ca9cb2ce.jpg",
                       widget.model),
               widget.model.state == ViewState.Busy
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
+                  ? ProductShimmer()
                   : CupCategory(
                       "https://salt.tikicdn.com/cache/w885/ts/banner/da/70/d7/37bf047b349b47721add7b888b766df8.jpg",
                       widget.model),
               widget.model.state == ViewState.Busy
-                  ? Center(
-                      child: CircularProgressIndicator(),
-                    )
+                  ? ProductShimmer()
                   : CoffeeCategory(
                       "https://salt.tikicdn.com/cache/w885/ts/banner/31/ce/87/b7c8ec03fe33c0935b60301cf98b2cb4.jpg",
                       widget.model),
