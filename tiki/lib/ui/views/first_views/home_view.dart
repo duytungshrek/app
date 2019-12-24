@@ -38,7 +38,6 @@ class HomeViewState extends State<HomeView> {
           currentIndex: model.currentIndex,
           onTap: (int index) {
             model.changeIndex(index);
-            print(model.currentIndex);
           },
           items: allTabs.map((ListTab tab) {
             return BottomNavigationBarItem(
