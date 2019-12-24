@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:typicons_flutter/typicons_flutter.dart';
+import 'package:flutter/cupertino.dart';
 class ListTab {
   const ListTab(this.title, this.icon);
   final String title;
@@ -6,9 +8,9 @@ class ListTab {
 }
 
 const List<ListTab> allTabs = <ListTab>[
-  ListTab('Trang chủ', Icons.home),
-  ListTab('Danh mục', Icons.list),
+  ListTab('Trang chủ', CupertinoIcons.home),
+  ListTab('Danh mục', Typicons.th_large_outline),
   ListTab('Tìm kiếm', Icons.search),
   ListTab('Thông báo', Icons.notifications_none),
-  ListTab('Cá nhân', Icons.account_circle),
+  ListTab('Cá nhân', Icons.person_outline),
 ];
