@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:tiki/enums/view_state.dart';
 import 'package:tiki/models/home_product.dart';
 import 'package:tiki/scoped_models/base_model.dart';
@@ -27,6 +28,16 @@ class TabHomeModel extends BaseModel {
 
   void notify() {
     notifyListeners();
+  }
+
+  String formatMoney(double money) {
+    if(money!=null){
+      final formatCurrency = new NumberFormat("#,###", "vi").format(money);
+      return formatCurrency.toString();
+
+    }else{
+      return "0.0";
+    }
   }
 
 

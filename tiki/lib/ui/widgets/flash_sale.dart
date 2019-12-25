@@ -3,6 +3,7 @@ import 'package:tiki/enums/view_state.dart';
 import 'package:tiki/models/types.dart';
 import 'package:tiki/scoped_models/tab_home_model.dart';
 import 'package:tiki/ui/shared/flutter_screenutil.dart';
+import 'package:tiki/ui/views/second_views/product_detail_page.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class FlashSale extends StatefulWidget {
@@ -94,54 +95,60 @@ class _Tab1State extends State<Tab1> {
         physics: BouncingScrollPhysics(),
         children: List.generate(widget.model.getData.bestseller.items.length,
             (index) {
-          return Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Stack(
-                    alignment: AlignmentDirectional.topEnd,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          child: FadeInImage.memoryNetwork(
-                            image:
-                                'https://trungnguyen.izysync.com/pub/media/catalog/product${widget.model.getData.bestseller.items[index].mediaGalleryEntries[0].file}',
-                            fit: BoxFit.contain,
-                            placeholder: kTransparentImage,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ProductDetailPage(widget.model)));
+            },
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            child: FadeInImage.memoryNetwork(
+                              image:
+                                  'https://trungnguyen.izysync.com/pub/media/catalog/product${widget.model.getData.bestseller.items[index].mediaGalleryEntries[0].file}',
+                              fit: BoxFit.contain,
+                              placeholder: kTransparentImage,
+                            ),
+                            width: ScreenUtil.getInstance().setWidth(100),
+                            height: ScreenUtil.getInstance().setHeight(100),
                           ),
-                          width: ScreenUtil.getInstance().setWidth(100),
-                          height: ScreenUtil.getInstance().setHeight(100),
                         ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        width: ScreenUtil.getInstance().setWidth(30),
-                        height: ScreenUtil.getInstance().setHeight(15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
-                          color: Color(0xFFff424e),
-                        ),
-                        child: Text(
-                          "-55%",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: ScreenUtil.getInstance().setSp(10)),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Text(
-                    '${widget.model.getData.bestseller.items[index].price} đ'),
-              ),
-              buildSoldBar(3, 8),
-            ],
+                        Container(
+                          alignment: AlignmentDirectional.center,
+                          width: ScreenUtil.getInstance().setWidth(30),
+                          height: ScreenUtil.getInstance().setHeight(15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            color: Color(0xFFff424e),
+                          ),
+                          child: Text(
+                            "-55%",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: ScreenUtil.getInstance().setSp(10)),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Text(
+                      '${widget.model.getData.bestseller.items[index].price} đ'),
+                ),
+                buildSoldBar(3, 8),
+              ],
+            ),
           );
         }),
       );

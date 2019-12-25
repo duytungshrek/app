@@ -137,7 +137,7 @@ class Tab2 extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ProductDetailPage()));
+                  MaterialPageRoute(builder: (context) => ProductDetailPage(model)));
             },
             child: Container(
               color: Colors.white,
