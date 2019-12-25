@@ -1,3 +1,2 @@
-# app
-# NGUYEN DUY TUNG 
+# © Nguyễn Duy Tùng 
 
