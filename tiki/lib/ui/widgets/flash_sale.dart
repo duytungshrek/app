@@ -144,7 +144,7 @@ class _Tab1State extends State<Tab1> {
                 Padding(
                   padding: const EdgeInsets.all(2.0),
                   child: Text(
-                      '${widget.model.getData.bestseller.items[index].price} đ'),
+                      '${widget.model.formatMoney(widget.model.getData.bestseller.items[index].price)} đ'),
                 ),
                 buildSoldBar(3, 8),
               ],

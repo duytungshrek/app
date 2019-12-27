@@ -167,7 +167,7 @@ class Tab2 extends StatelessWidget {
                     width: ScreenUtil.getInstance().setWidth(80),
                     alignment: AlignmentDirectional.center,
                     child: Text(
-                      '${model.getData.bestseller.items[index].price} đ',
+                      '${model.formatMoney(model.getData.bestseller.items[index].price)} đ',
                     ),
                   ),
                 ],
