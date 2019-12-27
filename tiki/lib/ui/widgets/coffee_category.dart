@@ -177,7 +177,7 @@ class _Tab1State extends State<Tab1> {
                     width: ScreenUtil.getInstance().setWidth(80),
                     alignment: AlignmentDirectional.center,
                     child: Text(
-                      '${widget.model.getData.coffee.items[index].price} đ',
+                      '${widget.model.formatMoney(widget.model.getData.coffee.items[index].price)} đ',
                     ),
                   ),
                 ],

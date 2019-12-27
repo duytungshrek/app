@@ -30,7 +30,7 @@ class TabHomeModel extends BaseModel {
     notifyListeners();
   }
 
-  String formatMoney(double money) {
+  String formatMoney(dynamic money) {
     if(money!=null){
       final formatCurrency = new NumberFormat("#,###", "vi").format(money);
       return formatCurrency.toString();
