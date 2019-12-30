@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:tiki/scoped_models/tab_home_model.dart';
@@ -156,7 +154,262 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               color: Color(0xFFff424e),
               onPressed: () {},
             ),
-          )
+          ),
+          Container(
+            height: ScreenUtil.getInstance().setHeight(5),
+            color: Colors.grey,
+          ),
+          Container(
+            height: ScreenUtil.getInstance().setHeight(120),
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset(
+                        "images/check_shield.png",
+                        fit: BoxFit.cover,
+                      ),
+                      height: ScreenUtil.getInstance().setHeight(30),
+                      width: ScreenUtil.getInstance().setWidth(30),
+                    ),
+                    Container(
+                      width: ScreenUtil.getInstance().setWidth(100),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        text: TextSpan(
+                          text: 'Bồi thường\n',
+                          style: TextStyle(
+                              fontSize: ScreenUtil.getInstance().setSp(14),
+                              color: Colors.black),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: '111%\n',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        ScreenUtil.getInstance().setSp(14))),
+                            TextSpan(
+                                text: 'nếu hàng giả',
+                                style: TextStyle(
+                                    fontSize:
+                                        ScreenUtil.getInstance().setSp(14))),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ),
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset(
+                        "images/check_square.png",
+                        fit: BoxFit.cover,
+                      ),
+                      height: ScreenUtil.getInstance().setHeight(30),
+                      width: ScreenUtil.getInstance().setWidth(30),
+                    ),
+                    Container(
+                      width: ScreenUtil.getInstance().setWidth(100),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        text: TextSpan(
+                          text: 'Kiểm tra\n',
+                          style: TextStyle(
+                              fontSize: ScreenUtil.getInstance().setSp(14),
+                              color: Colors.black),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: 'hàng hóa\n',
+                                style: TextStyle(
+                                    fontSize:
+                                        ScreenUtil.getInstance().setSp(14))),
+                            TextSpan(
+                                text: 'khi nhận hàng',
+                                style: TextStyle(
+                                    fontSize:
+                                        ScreenUtil.getInstance().setSp(14))),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ),
+                Column(
+                  children: <Widget>[
+                    Container(
+                      child: Image.asset(
+                        "images/re_square.png",
+                        fit: BoxFit.cover,
+                      ),
+                      height: ScreenUtil.getInstance().setHeight(30),
+                      width: ScreenUtil.getInstance().setWidth(30),
+                    ),
+                    Container(
+                      width: ScreenUtil.getInstance().setWidth(100),
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        text: TextSpan(
+                          text: 'Đổi trả trong\n',
+                          style: TextStyle(
+                              fontSize: ScreenUtil.getInstance().setSp(14),
+                              color: Colors.black),
+                          children: <TextSpan>[
+                            TextSpan(
+                                text: '30 ngày\n',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize:
+                                        ScreenUtil.getInstance().setSp(14))),
+                            TextSpan(
+                                text: 'nếu sp lỗi',
+                                style: TextStyle(
+                                    fontSize:
+                                        ScreenUtil.getInstance().setSp(14))),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: ScreenUtil.getInstance().setHeight(5),
+            color: Colors.grey,
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
+            height: ScreenUtil.getInstance().setHeight(3*40.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(
+                  "Các Ưu Đãi Khác",
+                  style: TextStyle(
+                      fontSize: ScreenUtil.getInstance().setSp(16),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.info_outline,
+                      color: Colors.blue,
+                      size: ScreenUtil.getInstance().setSp(20),
+                    ),
+                    Container(
+                      width: ScreenUtil.getInstance().width,
+                      child: Text(
+                        "Thẻ VietinBank, giảm 100k cho đơn hàng từ 5 triệu",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: ScreenUtil.getInstance().setSp(14),
+                            color: Colors.black),
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      size: ScreenUtil.getInstance().setSp(18),
+                    ),
+                  ],
+                ),
+                Divider(
+                  height: 0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.info_outline,
+                      color: Colors.blue,
+                      size: ScreenUtil.getInstance().setSp(20),
+                    ),
+                    Container(
+                      width: ScreenUtil.getInstance().width,
+                      child: Text(
+                        "Thẻ SHB, giảm 100k cho đơn hàng từ 5 triệu",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: ScreenUtil.getInstance().setSp(14),
+                            color: Colors.black),
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      size: ScreenUtil.getInstance().setSp(18),
+                    ),
+                  ],
+                ),
+                Divider(
+                  height: 0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.info_outline,
+                      color: Colors.blue,
+                      size: ScreenUtil.getInstance().setSp(20),
+                    ),
+                    Container(
+                      width: ScreenUtil.getInstance().width,
+                      child: Text(
+                        "Thẻ Timo, giảm 100k cho đơn hàng từ 5 triệu",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: ScreenUtil.getInstance().setSp(14),
+                            color: Colors.black),
+                      ),
+                    ),
+                    Icon(
+                      Icons.navigate_next,
+                      size: ScreenUtil.getInstance().setSp(18),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            color: Colors.grey,
+            height: ScreenUtil.getInstance().setHeight(5),
+          ),
+          Container(
+            height: ScreenUtil.getInstance().height,
+            margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(
+                  "Thông Tin Chi Tiết",
+                  style: TextStyle(
+                      fontSize: ScreenUtil.getInstance().setSp(16),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -83,6 +83,9 @@ flutter:
       - images/history.png
       - images/percent.png
       - images/bill.png
+      - images/check_shield.png
+      - images/check_square.png
+      - images/re_square.png
       - images/category/1.png
       - images/category/2.png
       - images/category/3.png

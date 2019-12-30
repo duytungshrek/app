@@ -10,6 +10,7 @@ import 'package:tiki/ui/shared/flutter_screenutil.dart';
 import 'package:tiki/ui/shared/product_shimmer.dart';
 import 'package:tiki/ui/widgets/bestseller_category.dart';
 import 'package:tiki/ui/widgets/coffee_category.dart';
+import 'package:tiki/ui/widgets/coffee_maker_category.dart';
 import 'package:tiki/ui/widgets/cup_category.dart';
 import 'package:tiki/ui/widgets/flash_sale.dart';
 import 'package:tiki/ui/widgets/new_category.dart';
@@ -342,13 +343,18 @@ class _TabHomeState extends State<TabHome> {
                       widget.model),
               widget.model.state == ViewState.Busy
                   ? ProductShimmer()
+                  : CfMakerCategory(
+                      "https://salt.tikicdn.com/cache/w885/ts/banner/31/ce/87/b7c8ec03fe33c0935b60301cf98b2cb4.jpg",
+                      widget.model),
+              widget.model.state == ViewState.Busy
+                  ? ProductShimmer()
                   : CupCategory(
-                      "https://salt.tikicdn.com/cache/w885/ts/banner/da/70/d7/37bf047b349b47721add7b888b766df8.jpg",
+                      "https://trungnguyen.izysync.com/pub/media/catalog/tmp/category/LY_THUY_TINH_2024X748-01.jpg",
                       widget.model),
               widget.model.state == ViewState.Busy
                   ? ProductShimmer()
                   : CoffeeCategory(
-                      "https://salt.tikicdn.com/cache/w885/ts/banner/31/ce/87/b7c8ec03fe33c0935b60301cf98b2cb4.jpg",
+                      "https://trungnguyen.izysync.com/pub/media/catalog/tmp/category/Banner-web-2024x748.jpg",
                       widget.model),
             ]),
           ),
