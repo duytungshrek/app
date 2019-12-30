@@ -7,8 +7,8 @@ class TabHomeService {
   Future<HomeProduct> fetchHomeProductData() async {
     String url = "https://trungnguyen.izysync.com/rest/V1/mobileapi/stores/home";
     String urlFake =
-        "https://raw.githubusercontent.com/duytungshrek/JSON/master/response.json";
-    final response = await http.get(urlFake);
+        "https://raw.githubusercontent.com/duytungshrek/JSON/master/response2.json";
+    final response = await http.get(url);
     if (response.statusCode == 200) {
       var data = json.decode(response.body);
       // If the call to the server was successful, parse the JSON.
