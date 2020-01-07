@@ -14,12 +14,15 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 320, height: 568)..init(context);
     return  BaseView<HomeViewModel>(
+        onModelReady: (model) {
+          model.getLocation();
+        },
         builder: (context, child, model) => Scaffold(
           body: SafeArea(
             child: IndexedStack(
               index: model.currentIndex,
               children: [
-                Tab1(),
+                Tab1(model),
                 Tab2(),
                 Tab3(),
                 Tab4(),
